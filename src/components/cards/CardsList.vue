@@ -1,10 +1,13 @@
 <script>
+import { store } from "../../data/store";
+
 import CardDetail from "./CardDetail.vue";
 
 export default {
   data() {
     return {
       title: "Cards List",
+      store
     };
   },
 
@@ -13,7 +16,14 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <h2>{{ title }}</h2>
+
+  <ul>
+    <li  v-for="movie in movies" :key="movie.id">
+      {{ movie.title }} - {{ movie.original_title }} - {{ movie.language }} -
+      {{ movie.vote }}
+    </li>
+  </ul>
   <CardDetail />
 </template>
 
