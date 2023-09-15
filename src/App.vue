@@ -15,16 +15,15 @@ export default {
   components: { AppHeader, AppMain },
 
   methods: {
-    fetchMovies(queryString) {
+    fetchMovies(term) {
       axios
         .get("https://api.themoviedb.org/3/search/movie", {
           params: {
-            query: "ritorno",
+            query: term,
             api_key: "c1d46a13d18121bd8fc7c9da7083f0ba",
           },
         })
         .then((res) => {
-          // console.log(res.data.results);
           this.movies = res.data.results;
         });
     },
@@ -39,10 +38,10 @@ export default {
 <template>
   <AppHeader @start-search="fetchMovies" />
   <ul>
-    <!-- <li v-for="movie in movies" :key="movie.id">
+    <li v-for="movie in movies" :key="movie.id">
       {{ movie.title }} - {{ movie.original_title }} -
       {{ movie.original_language }} - {{ movie.vote_average }} -
-    </li> -->
+    </li>
   </ul>
   <AppMain />
 </template>
