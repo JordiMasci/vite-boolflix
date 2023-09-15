@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       title: "Cards List",
-      store
+      store,
     };
   },
 
@@ -17,14 +17,7 @@ export default {
 
 <template>
   <h2>{{ title }}</h2>
-
-  <ul>
-    <li  v-for="movie in movies" :key="movie.id">
-      {{ movie.title }} - {{ movie.original_title }} - {{ movie.language }} -
-      {{ movie.vote }}
-    </li>
-  </ul>
-  <CardDetail />
+  <CardDetail v-for="movie in store.movies" :key="movie.id" :cardInfo="movie"/>
 </template>
 
 <style lang="scss" scoped></style>
