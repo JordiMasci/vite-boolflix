@@ -25,7 +25,7 @@ export default {
   <div class="card">
     <div class="card-body">
       <ul>
-        <li>{{ cardInfo.name }}</li>
+        <li>{{ cardInfo.title }}</li>
         <li>{{ cardInfo.original_title }}</li>
         <li v-if="hasFlag">
           <img :src="flagSrc" :alt="cardInfo.language" />

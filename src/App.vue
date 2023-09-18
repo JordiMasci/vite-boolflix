@@ -42,6 +42,7 @@ export default {
               vote: Math.ceil(vote_average / 2),
             };
           });
+          console.log(store.movies);
         });
     },
 

@@ -18,10 +18,14 @@ export default {
 
 <template>
   <h2>{{ title }}</h2>
-  <CardDetail v-for="movie in store.movies" :key="movie.id" :cardInfo="movie"/>
+  <CardDetail v-for="movie in store.movies" :key="movie.id" :cardInfo="movie" />
 
   <h2>{{ title2 }}</h2>
-  <CardDetail v-for="tvSeri in store.tvSerie" :key="tvSeri.id" :cardInfo="tvSeri"/>
+  <CardDetail
+    v-for="tvSeri in store.tvSerie"
+    :key="tvSeri.id"
+    :cardInfo="tvSeri"
+  />
 </template>
 
 <style lang="scss" scoped></style>
