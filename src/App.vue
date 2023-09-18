@@ -33,6 +33,7 @@ export default {
               original_title,
               original_language,
               vote_average,
+              posterPath = movie.poster_path,
             } = movie;
             return {
               id,
@@ -40,6 +41,7 @@ export default {
               original_title,
               language: original_language,
               vote: Math.ceil(vote_average / 2),
+              posterPath,
             };
           });
           console.log(store.movies);
@@ -62,6 +64,7 @@ export default {
               original_title = tvSerie.original_name,
               original_language = tvSerie.original_language,
               vote_average = tvSerie.vote_average,
+              posterPath = tvSerie.poster_path,
             } = tvSerie;
             return {
               id,
@@ -69,10 +72,11 @@ export default {
               original_title,
               language: original_language,
               vote: Math.ceil(vote_average / 2),
+              posterPath,
             };
           });
           console.log(tvSeriesData);
-          store.tvSerie = tvSeriesData
+          store.tvSerie = tvSeriesData;
         });
     },
 

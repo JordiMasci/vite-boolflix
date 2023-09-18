@@ -17,6 +17,14 @@ export default {
       );
       return flagUrl.href;
     },
+
+    posterSrc() {
+      const poster = {
+        baseUrl: "https://image.tmdb.org/t/p",
+        size: "/w342",
+      };
+      return `${poster.baseUrl}${poster.size}${this.cardInfo.posterPath}`;
+    },
   },
 };
 </script>
@@ -27,13 +35,22 @@ export default {
       <ul>
         <li>{{ cardInfo.title }}</li>
         <li>{{ cardInfo.original_title }}</li>
-        <li v-if="hasFlag">
+        <li v-if="hasFlag" class="bandiera">
           <img :src="flagSrc" :alt="cardInfo.language" />
         </li>
         <li>{{ cardInfo.vote }}</li>
+        <li>
+          <img :src="posterSrc" :alt="cardInfo.title" />
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bandiera {
+  img {
+    height: 50px;
+  }
+}
+</style>
