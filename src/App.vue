@@ -44,13 +44,50 @@ export default {
           });
         });
     },
+
+    fetchTvSeries(term) {
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            query: term,
+            api_key,
+          },
+        })
+        .then((response) => {
+          const tvSeriesData = response.data.results.map((tvSerie) => {
+            const {
+              id = tvSerie.id,
+              title = tvSerie.name,
+              original_title = tvSerie.original_name,
+              original_language = tvSerie.original_language,
+              vote_average = tvSerie.vote_average,
+            } = tvSerie;
+            return {
+              id,
+              title,
+              original_title,
+              language: original_language,
+              vote: Math.ceil(vote_average / 2),
+            };
+          });
+          console.log(tvSeriesData);
+          store.tvSerie = tvSeriesData
+        });
+    },
+
+    handleSearch(term) {
+      if (!term) return;
+
+      this.fetchMovies(term);
+      this.fetchTvSeries(term);
+    },
   },
 };
 </script>
 
 <template>
-  <AppHeader @start-search="fetchMovies" />
-  
+  <AppHeader @start-search="handleSearch" />
+
   <AppMain />
 </template>
 
